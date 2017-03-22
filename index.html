@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> 
+</head>
+<body>
+
+<p>尝试修改以下表单。</p>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+名: <input type="text" ng-model="firstName"><br>
+姓: <input type="text" ng-model="lastName"><br>
+<br>
+姓名: {{firstName + " " + lastName}}
+
+    <ul>
+        <li ng-repeat = "x in arrName">{{ x }}</li>
+    </ul>
+
+    <usersex-directive></usersex-directive>
+</div>
+
+<script>
+
+    let app = angular.module("myApp",[]);
+    let students = ["小明","小花","小菜","张三","李四","王二狗"];
+    app.controller("myCtrl",function($scope){
+        $scope.firstName = "heqiang";
+        $scope.lastName = "xiaoming";
+        
+        $scope.arrName = students;
+    })
+
+    app.directive("usersexDirective",function(){
+        return{
+            template : `
+                <p>这是一个模板</p>
+                <div>sdfsdfsdfsdfsdf</div>
+                我的年龄 {{ sex }}
+                <input name="add" type="text" value="{{add}}" ng-model="add" >
+                <a href="http://www.baidu.com">前往百度</a>
+                <p>{{add}}</p>
+            `
+        }
+    }).controller("myCtrl",function($scope){
+        $scope.sex = 123;
+        $scope.add = '四川成都'
+    })
+</script>
+
+</body>
+</html>
